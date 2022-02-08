@@ -1,0 +1,47 @@
+{% extends "events/base.html" %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<style>  
+  /* error message */
+  .alert-block{
+  list-style-type: none;
+  color: rgb(247, 96, 96);
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+  font-weight: lighter;
+}
+
+</style>
+{% block navbar2 %}
+{% endblock %}
+<section class="vh-100 login-bg">
+           <div class="container py-5 h-100">
+             <div class="row d-flex justify-content-center align-items-center h-100">
+               <div class="col col-xl-10">
+                 <div class="card" style="border-radius: 1rem;">
+                   <div class="row g-0">                     
+                     <div class="col-md-12 col-lg-12 d-flex align-items-center">
+                       <div class="card-body p-4 p-lg-5 text-black text-center">         
+                        <form method="post">
+                          {% csrf_token %}
+                          {{ form | crispy }}
+                          <div>
+                          <button type="submit" class="btn btn-primary btn-lg ms-2">Login</button>
+                         <br><br>
+                         <br>
+                         <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="{% url 'events:register' %}" style="color: #f51010;">Register here</a></p>
+                          </div>
+                      </form>                                
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </section>
+{% endblock %}
